@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy First Anniversary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#FBF1F1;
+  --surface:#FFFFFF;
+  --ink:#2A1630;
+  --muted:#7A5A6A;
+  --rose:#B83A5C;
+  --gold:#9A6B1E;
+  --line:#E6CFD3;
+  --paper:#FBF4EC;
+  --paper-ink:#3A1F2B;
+  --wax:#A5233F;
+  --display:'Bodoni Moda','Didot',Georgia,serif;
+  --body:'Newsreader',Georgia,'Times New Roman',serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#1B0F1C;
+    --surface:#2A1630;
+    --ink:#F5E9E4;
+    --muted:#BFA6B4;
+    --rose:#E59AAE;
+    --gold:#D8B06A;
+    --line:#4A2B52;
+    color-scheme:dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:#1B0F1C;
+  --surface:#2A1630;
+  --ink:#F5E9E4;
+  --muted:#BFA6B4;
+  --rose:#E59AAE;
+  --gold:#D8B06A;
+  --line:#4A2B52;
+  color-scheme:dark;
+}
+
+html {
+  scroll-padding-top:env(safe-area-inset-top,0px);
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.15rem;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+:focus-visible {
+  outline:2px solid var(--rose);
+  outline-offset:3px;
+}
+
+.wrap {
+  max-width:760px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Hero */
+
+.hero {
+  position:relative;
+  overflow:hidden;
+  padding:clamp(56px,12vh,120px) 0 56px;
+}
+
+.numeral {
+  position:absolute;
+  right:-2%;
+  top:-6%;
+  font:italic 500 clamp(18rem,52vw,34rem)/1 var(--display);
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--gold);
+  opacity:.28;
+  pointer-events:none;
+  user-select:none;
+}
+
+.hero .wrap {
+  position:relative;
+}
+
+h1 {
+  font:500 clamp(2.8rem,9vw,5.6rem)/1.02 var(--display);
+  letter-spacing:-.01em;
+  margin:0 0 .35em;
+  max-width:11ch;
+}
+
+.date {
+  font:italic 500 clamp(1.3rem,3.4vw,1.8rem) var(--display);
+  color:var(--rose);
+  margin:0 0 2.2rem;
+}
+
+.count {
+  display:flex;
+  gap:clamp(16px,4vw,40px);
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:1.4rem;
+}
+
+.count div {
+  min-width:64px;
+}
+
+.count b {
+  display:block;
+  font:500 clamp(2rem,6vw,3rem)/1 var(--display);
+  font-variant-numeric:tabular-nums;
+}
+
+.count span {
+  font-size:.95rem;
+  color:var(--muted);
+}
+
+.count p {
+  margin:0;
+  font:italic 500 1.5rem var(--display);
+}
+
+.sofar {
+  margin:1.1rem 0 0;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+/* Envelope */
+
+.stage {
+  padding:24px 0 72px;
+  text-align:center;
+}
+
+.envelope {
+  position:relative;
+  display:block;
+  width:min(100%,440px);
+  aspect-ratio:3/2;
+  margin:0 auto;
+  padding:0;
+  background:var(--surface);
+  border:1px solid var(--gold);
+  border-radius:4px;
+  cursor:pointer;
+  color:inherit;
+  font:inherit;
+  transition:opacity .6s,transform .6s;
+}
+
+.envelope:disabled {
+  cursor:not-allowed;
+  opacity:.75;
+}
+
+.envelope:disabled .seal {
+  background:#777;
+}
+
+.envelope .flap {
+  position:absolute;
+  inset:0 0 auto 0;
+  height:58%;
+  background:var(--line);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform .8s ease;
+}
+
+.envelope .seal {
+  position:absolute;
+  left:50%;
+  top:58%;
+  width:64px;
+  height:64px;
+  margin:-32px 0 0 -32px;
+  border-radius:50%;
+  background:var(--wax);
+  color:#F7D9DE;
+  display:grid;
+  place-items:center;
+  font-size:1.6rem;
+  box-shadow:0 3px 10px rgba(0,0,0,.3);
+  transition:opacity .4s;
+}
+
+.envelope .hint {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:14%;
+  font:italic 500 1.2rem var(--display);
+  color:var(--muted);
+}
+
+.envelope.open .flap {
+  transform:rotateX(180deg);
+  opacity:0;
+}
+
+.envelope.open .seal,
+.envelope.open .hint {
+  opacity:0;
+}
+
+.envelope.gone {
+  opacity:0;
+  transform:translateY(-12px);
+  height:0;
+  aspect-ratio:auto;
+  border:0;
+  overflow:hidden;
+  margin:0;
+  pointer-events:none;
+}
+
+.letter {
+  display:none;
+  text-align:left;
+  background:var(--paper);
+  color:var(--paper-ink);
+  border-top:3px solid var(--gold);
+  padding:clamp(28px,6vw,64px);
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+
+.letter.on {
+  display:block;
+}
+
+.letter p {
+  margin:0 0 1.2em;
+  max-width:60ch;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .9s,transform .9s;
+}
+
+.letter p.show {
+  opacity:1;
+  transform:none;
+}
+
+.letter .to {
+  font:italic 500 clamp(1.8rem,5vw,2.4rem)/1.2 var(--display);
+}
+
+.letter .sign {
+  font:italic 500 1.6rem var(--display);
+  margin-bottom:0;
+}
+
+/* Forms */
+
+.panel {
+  border-top:1px solid var(--line);
+  padding:48px 0;
+}
+
+h2 {
+  font:500 clamp(1.6rem,4.4vw,2.1rem)/1.15 var(--display);
+  margin:0 0 .5rem;
+}
+
+.panel>p,
+.note {
+  color:var(--muted);
+  margin:0 0 1.4rem;
+  font-size:1.05rem;
+}
+
+.row {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+label {
+  display:block;
+  font-size:.95rem;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+input,
+textarea {
+  width:100%;
+  font:inherit;
+  color:var(--ink);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:12px 14px;
+}
+
+.row>div {
+  flex:1 1 220px;
+}
+
+textarea {
+  min-height:140px;
+  resize:vertical;
+}
+
+button.btn {
+  margin-top:14px;
+  font:inherit;
+  font-weight:400;
+  background:var(--rose);
+  color:#fff;
+  border:0;
+  border-radius:4px;
+  padding:12px 22px;
+  cursor:pointer;
+}
+
+:root:not([data-theme="light"]) .btn {
+  color:#1B0F1C;
+}
+
+footer {
+  padding:40px 0 64px;
+  text-align:center;
+  color:var(--muted);
+  font:italic 500 1.2rem var(--display);
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="numeral" aria-hidden="true">1</div>
+
+  <div class="wrap">
+    <h1>Happy first anniversary</h1>
+    <p class="date">25 November</p>
+
+    <div class="count" id="count" role="timer" aria-live="off"></div>
+    <p class="sofar" id="sofar"></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="stage" aria-label="Love letter">
+
+    <button
+      class="envelope"
+      id="seal"
+      disabled
+      aria-disabled="true"
+      aria-expanded="false"
+      aria-controls="letter"
+    >
+      <span class="flap"></span>
+      <span class="seal" aria-hidden="true">♥</span>
+      <span class="hint">Locked until 25 November</span>
+    </button>
+
+    <article class="letter" id="letter"></article>
+
+  </section>
+
+  <section class="panel" aria-labelledby="h-names">
+    <h2 id="h-names">Make it yours</h2>
+    <p>Add your names and the letter rewrites itself. They stay saved on this device.</p>
+
+    <div class="row">
+      <div>
+        <label for="her">Her name</label>
+        <input id="her" maxlength="40" autocomplete="off" placeholder="My love">
+      </div>
+
+      <div>
+        <label for="you">Your name</label>
+        <input id="you" maxlength="40" autocomplete="off" placeholder="Yours, always">
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-reply">
+    <h2 id="h-reply">Write back</h2>
+    <p>A few words for the next year.</p>
+
+    <label for="reply">Your reply</label>
+    <textarea id="reply" maxlength="1200"></textarea>
+
+    <button class="btn" id="save" type="button">Save reply</button>
+
+    <p class="note" id="saved" role="status" style="margin:12px 0 0"></p>
+  </section>
+
+</main>
+
+<footer>One year down. Every year after, with you.</footer>
+
+<script>
+
+/* ---------- Config ---------- */
+
+const CONFIG = {
+  start: new Date(2025, 10, 25),
+  anniversary: new Date(2026, 10, 25, 0, 0, 0),
+  storeKey: 'anniversary:v1'
+};
+
+
+/* ---------- Data layer ---------- */
+
+const Store = (() => {
+
+  let memory = {};
+
+  const read = () => {
+    try {
+      return JSON.parse(localStorage.getItem(CONFIG.storeKey)) || {};
+    } catch (e) {
+      return memory;
+    }
+  };
+
+  return {
+
+    load: () => Object.assign({
+      her: '',
+      you: '',
+      reply: ''
+    }, read()),
+
+    save(patch) {
+      memory = Object.assign({}, read(), memory, patch);
+
+      try {
+        localStorage.setItem(CONFIG.storeKey, JSON.stringify(memory));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+  };
+
+})();
+
+
+/* ---------- Letter content ---------- */
+
+const Content = {
+
+  letter: (her, you) => [
+
+    {
+      cls: 'to',
+      text: `${her},`
+    },
+
+    {
+      text: `A year ago, on the 25th of November, my life quietly changed. I didn’t know it yet. I only knew that I wanted to stay near you a little longer, and then a little longer than that.`
+    },
+
+    {
+      text: `You turned ordinary days into the ones I remember. The small things, your laugh, the way you listen, the way you make a hard day lighter, became my favourite parts of every week.`
+    },
+
+    {
+      text: `This year taught me what it feels like to be understood without having to explain. Thank you for your patience, for your kindness, and for choosing me again every single day.`
+    },
+
+    {
+      text: `I can’t promise a perfect year. I can promise to hold your hand through all of them, to laugh with you often, and to keep falling for you in new ways.`
+    },
+
+    {
+      text: `Happy first anniversary. I love you more today than I knew was possible a year ago.`
+    },
+
+    {
+      cls: 'sign',
+      text: `Forever yours,<br>${you}`
+    }
+
+  ]
+
+};
+
+
+/* ---------- Views ---------- */
+
+const $ = id => document.getElementById(id);
+
+const esc = s => s.replace(/[&<>\"]/g, c => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;'
+}[c]));
+
+const state = Store.load();
+
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let opened = false;
+
+
+/* ---------- Render letter ---------- */
+
+function renderLetter() {
+
+  const her = esc(state.her.trim()) || 'My love';
+  const you = esc(state.you.trim()) || 'Yours, always';
+
+  $('letter').innerHTML = Content.letter(her, you)
+    .map(p =>
+      `<p class="${p.cls || ''}${opened ? ' show' : ''}">${p.text}</p>`
+    )
+    .join('');
+
+}
+
+
+/* ---------- Open letter ---------- */
+
+function openLetter() {
+
+  // CRITICAL: Never allow opening before the anniversary.
+  if (Date.now() < CONFIG.anniversary.getTime()) {
+    return;
+  }
+
+  if (opened) return;
+
+  opened = true;
+
+  const seal = $('seal');
+  const letter = $('letter');
+
+  seal.disabled = true;
+  seal.classList.add('open');
+
+  seal.setAttribute('aria-expanded', 'true');
+
+  const reveal = () => {
+
+    seal.classList.add('gone');
+
+    letter.classList.add('on');
+
+    const ps = [...letter.querySelectorAll('p')];
+
+    ps.forEach((p, i) => {
+
+      setTimeout(
+        () => p.classList.add('show'),
+        reduceMotion ? 0 : 500 + i * 900
+      );
+
+    });
+
+    letter.setAttribute('tabindex', '-1');
+
+    letter.focus({
+      preventScroll: true
+    });
+
+    letter.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start'
+    });
+
+  };
+
+  setTimeout(reveal, reduceMotion ? 0 : 900);
+
+}
+
+
+/* ---------- Countdown and locking system ---------- */
+
+function tick() {
+
+  const now = new Date();
+
+  const diff = CONFIG.anniversary.getTime() - now.getTime();
+
+  const DAY = 864e5;
+
+  const box = $('count');
+
+  const seal = $('seal');
+
+  const hint = seal.querySelector('.hint');
+
+
+  if (diff > 0) {
+
+    // LOCK THE ENVELOPE
+
+    seal.disabled = true;
+
+    seal.setAttribute('aria-disabled', 'true');
+
+    hint.textContent = 'Locked until 25 November';
+
+
+    // Calculate countdown
+
+    const d = Math.floor(diff / DAY);
+
+    const h = Math.floor(diff / 36e5) % 24;
+
+    const m = Math.floor(diff / 6e4) % 60;
+
+    const s = Math.floor(diff / 1e3) % 60;
+
+
+    box.innerHTML = [
+      [d, 'days'],
+      [h, 'hours'],
+      [m, 'minutes'],
+      [s, 'seconds']
+    ]
+
+    .map(([n, l]) =>
+      `<div><b>${String(n).padStart(2, '0')}</b><span>${l}</span></div>`
+    )
+
+    .join('');
+
+
+    $('sofar').textContent =
+      `${Math.floor((now - CONFIG.start) / DAY)} days together so far.`;
+
+
+  } else {
+
+    // ANNIVERSARY REACHED: UNLOCK THE ENVELOPE
+
+    seal.disabled = false;
+
+    seal.setAttribute('aria-disabled', 'false');
+
+    hint.textContent = 'Open your letter';
+
+
+    box.innerHTML = `<p>Today we are one year in love.</p>`;
+
+
+    $('sofar').textContent =
+      `${Math.floor((now - CONFIG.start) / DAY)} days together, and counting.`;
+
+  }
+
+}
+
+
+/* ---------- Wiring ---------- */
+
+// Load saved information
+
+$('her').value = state.her;
+
+$('you').value = state.you;
+
+$('reply').value = state.reply;
+
+
+// Name inputs
+
+['her', 'you'].forEach(k => {
+
+  $(k).addEventListener('input', e => {
+
+    state[k] = e.target.value;
+
+    Store.save({ [k]: state[k] });
+
+    renderLetter();
+
+  });
+
+});
+
+
+// Save reply
+
+$('save').addEventListener('click', () => {
+
+  state.reply = $('reply').value;
+
+  const ok = Store.save({
+    reply: state.reply
+  });
+
+  $('saved').textContent = ok
+    ? 'Saved on this device.'
+    : 'Couldn’t save here. Copy your reply before you leave.';
+
+});
+
+
+// Envelope click
+
+$('seal').addEventListener('click', openLetter);
+
+
+/* ---------- Initialize ---------- */
+
+renderLetter();
+
+tick();
+
+// Update countdown every second
+
+setInterval(tick, 1000);
+
+</script>
+
+</body>
+</html>

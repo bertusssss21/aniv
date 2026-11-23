@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f1ed">
+
+  <title>A Little Something for You</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #f8f1ed;
+      --paper: #fffaf6;
+      --rose: #b77c79;
+      --rose-dark: #986361;
+      --gold: #b99b69;
+      --text: #51403d;
+      --muted: #9a8580;
+      --border: rgba(185, 155, 105, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 15% 20%, rgba(221, 184, 177, 0.22), transparent 45%),
+        radial-gradient(ellipse at 85% 80%, rgba(219, 195, 159, 0.18), transparent 45%),
+        var(--background);
+      color: var(--text);
+      font-family: "Newsreader", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 760px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1.2s ease both;
+    }
+
+    .top-label {
+      font-family: "Newsreader", serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 35px;
+    }
+
+    .ornament {
+      color: var(--gold);
+      font-size: 22px;
+      margin-bottom: 22px;
+      opacity: 0.8;
+    }
+
+    h1 {
+      font-family: "Bodoni Moda", serif;
+      font-size: clamp(45px, 9vw, 78px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: #745653;
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 430px;
+      margin: 0 auto;
+    }
+
+    .date {
+      margin-top: 28px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      max-width: 320px;
+      margin: 42px auto;
+      color: var(--gold);
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .countdown-heading {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(10px, 3vw, 25px);
+      margin-bottom: 48px;
+    }
+
+    .time-box {
+      width: clamp(65px, 17vw, 105px);
+      padding: 18px 5px 15px;
+      background: rgba(255, 250, 246, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      box-shadow: 0 8px 25px rgba(100, 70, 60, 0.035);
+    }
+
+    .time-number {
+      display: block;
+      font-family: "Bodoni Moda", serif;
+      font-size: clamp(30px, 6vw, 43px);
+      color: var(--rose-dark);
+      font-weight: 400;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-label {
+      display: block;
+      margin-top: 5px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .letter-card {
+      max-width: 490px;
+      margin: 0 auto;
+      padding: 36px 30px 32px;
+      background: rgba(255, 250, 246, 0.8);
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 45px rgba(100, 70, 60, 0.07);
+      position: relative;
+    }
+
+    .card-icon {
+      font-size: 30px;
+      color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: "Bodoni Moda", serif;
+      font-size: 29px;
+      font-weight: 400;
+      color: #745653;
+      margin-bottom: 10px;
+    }
+
+    .card-description {
+      font-size: 16px;
+      line-height: 1.65;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .open-button {
+      width: 100%;
+      max-width: 280px;
+      padding: 15px 22px;
+      border: 1px solid var(--rose);
+      background: var(--rose);
+      color: white;
+      font-family: "Newsreader", serif;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .open-button:hover:not(:disabled) {
+      background: var(--rose-dark);
+      border-color: var(--rose-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(152, 99, 97, 0.18);
+    }
+
+    .open-button:disabled {
+      background: #c9b5ae;
+      border-color: #c9b5ae;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .status {
+      margin-top: 17px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 45px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #b39e97;
+    }
+
+    .footer span {
+      color: var(--rose);
+    }
+
+    .petal {
+      position: fixed;
+      color: rgba(183, 124, 121, 0.13);
+      font-size: 30px;
+      pointer-events: none;
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .petal.one {
+      top: 12%;
+      left: 8%;
+    }
+
+    .petal.two {
+      bottom: 15%;
+      right: 9%;
+      animation-delay: -3s;
+    }
+
+    .petal.three {
+      top: 55%;
+      left: 4%;
+      font-size: 19px;
+      animation-delay: -5s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(12deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 35px 17px;
+      }
+
+      .top-label {
+        margin-bottom: 28px;
+      }
+
+      .divider {
+        margin: 32px auto;
+      }
+
+      .countdown {
+        margin-bottom: 35px;
+      }
+
+      .letter-card {
+        padding: 30px 20px;
+      }
+
+      .footer {
+        margin-top: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="petal one">✿</div>
+  <div class="petal two">✿</div>
+  <div class="petal three">✧</div>
+
+  <main class="page">
+
+    <div class="top-label">A little something special · 2026</div>
+
+    <div class="ornament">✧</div>
+
+    <h1>One year<br>of <em>us.</em></h1>
+
+    <p class="subtitle">
+      Some moments deserve more than just a message.
+      I've prepared something special for you.
+    </p>
+
+    <div class="date">November 25, 2026</div>
+
+    <div class="divider">♡</div>
+
+    <div class="countdown-heading">Something is waiting for you</div>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box">
+        <span class="time-number" id="days">00</span>
+        <span class="time-label">Days</span>
+      </div>
+
+      <div class="time-box">
+        <span class="time-number" id="hours">00</span>
+        <span class="time-label">Hours</span>
+      </div>
+
+      <div class="time-box">
+        <span class="time-number" id="minutes">00</span>
+        <span class="time-label">Minutes</span>
+      </div>
+
+      <div class="time-box">
+        <span class="time-number" id="seconds">00</span>
+        <span class="time-label">Seconds</span>
+      </div>
+    </div>
+
+    <section class="letter-card">
+
+      <div class="card-icon">♡</div>
+
+      <h2 class="card-title" id="cardTitle">
+        A letter, written for you.
+      </h2>
+
+      <p class="card-description" id="cardDescription">
+        A little collection of words, memories, and feelings.
+        It will be waiting here when the time is right.
+      </p>
+
+      <button class="open-button" id="openButton" disabled>
+        THE LETTER IS LOCKED
+      </button>
+
+      <p class="status" id="status">
+        ✧ Opens on November 25, 2026
+      </p>
+
+    </section>
+
+    <footer class="footer">
+      Made with <span>♡</span>, just for you.
+    </footer>
+
+  </main>
+
+  <script>
+    // ANNIVERSARY DATE
+    // November 25, 2026 at 00:00 in the visitor's local time.
+    const anniversaryDate = new Date(2026, 10, 25, 0, 0, 0);
+
+    // YOUR ORIGINAL LETTER PAGE
+    const letterPage = "index.html";
+
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
+
+    const openButton = document.getElementById("openButton");
+    const statusElement = document.getElementById("status");
+    const cardTitle = document.getElementById("cardTitle");
+    const cardDescription = document.getElementById("cardDescription");
+
+    let unlocked = false;
+
+    function unlockLetter() {
+      unlocked = true;
+
+      openButton.disabled = false;
+      openButton.textContent = "OPEN YOUR LETTER ♡";
+
+      statusElement.textContent = "✧ It's finally time. Enjoy your letter.";
+      cardTitle.textContent = "It's ready for you.";
+      cardDescription.textContent =
+        "The wait is over. There's something special waiting inside.";
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = anniversaryDate.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        daysElement.textContent = "00";
+        hoursElement.textContent = "00";
+        minutesElement.textContent = "00";
+        secondsElement.textContent = "00";
+
+        if (!unlocked) {
+          unlockLetter();
+        }
+
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor(
+        (difference % (1000 * 60)) / 1000
+      );
+
+      daysElement.textContent = String(days).padStart(2, "0");
+      hoursElement.textContent = String(hours).padStart(2, "0");
+      minutesElement.textContent = String(minutes).padStart(2, "0");
+      secondsElement.textContent = String(seconds).padStart(2, "0");
+    }
+
+    openButton.addEventListener("click", function () {
+      // Check the actual date again before navigating.
+      if (Date.now() < anniversaryDate.getTime()) {
+        updateCountdown();
+        return;
+      }
+
+      window.location.href = letterPage;
+    });
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
